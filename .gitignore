@@ -29,7 +29,6 @@ dft/simd/neon/*.c
 dft/simd/sse2/*.c
 
 # other generated files
-ChangeLog
 api/fftw3*.f*
 *.pc
 mpi/f03-wrap.c
@@ -62,7 +61,6 @@ doc/version.texi
 
 # autotools stuff
 Makefile
-Makefile.in
 .deps
 .libs
 stamp-h1
