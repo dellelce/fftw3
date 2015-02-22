@@ -59,24 +59,3 @@ doc/stamp-vti
 doc/texinfo.tex
 doc/version.texi
 
-# autotools stuff
-Makefile
-.deps
-.libs
-stamp-h1
-install-sh
-libtool
-ltmain.sh
-m4/libtool.m4
-m4/ltoptions.m4
-m4/ltsugar.m4
-m4/ltversion.m4
-m4/lt~obsolete.m4
-config.*
-autom4te.cache
-INSTALL
-aclocal.m4
-depcomp
-missing
-py-compile
-compile
