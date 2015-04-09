@@ -58,4 +58,5 @@ doc/rfftwnd.pdf
 doc/stamp-vti
 doc/texinfo.tex
 doc/version.texi
-
+config.h.in*
+*.cache
