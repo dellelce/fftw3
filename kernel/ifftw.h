@@ -975,6 +975,7 @@ void X(tile2d)(INT n0l, INT n0u, INT n1l, INT n1u, INT tilesz,
 	       void (*f)(INT n0l, INT n0u, INT n1l, INT n1u, void *args),
 	       void *args);
 void X(cpy1d)(R *I, R *O, INT n0, INT is0, INT os0, INT vl);
+void X(zero1d_pair)(R *O0, R *O1, INT n0, INT os0);
 void X(cpy2d)(R *I, R *O,
 	      INT n0, INT is0, INT os0,
 	      INT n1, INT is1, INT os1,
@@ -1026,7 +1027,7 @@ extern unsigned X(random_estimate_seed);
 
 double X(measure_execution_time)(const planner *plnr, 
 				 plan *pln, const problem *p);
-IFFTW_EXTERN int X(alignment_of)(R *p);
+IFFTW_EXTERN int X(ialignment_of)(R *p);
 unsigned X(hash)(const char *s);
 INT X(nbuf)(INT n, INT vl, INT maxnbuf);
 int X(nbuf_redundant)(INT n, INT vl, int which, 

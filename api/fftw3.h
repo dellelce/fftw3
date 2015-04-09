@@ -107,6 +107,8 @@ struct fftw_iodim64_do_not_use_me {
 
 typedef void (*fftw_write_char_func_do_not_use_me)(char c, void *);
 typedef int (*fftw_read_char_func_do_not_use_me)(void *);
+typedef void (*fftw_before_planner_hook_do_not_use_me)(void);
+typedef void (*fftw_after_planner_hook_do_not_use_me)(void);
 
 /*
   huge second-order macro that defines prototypes for all API
@@ -130,6 +132,11 @@ typedef enum fftw_r2r_kind_do_not_use_me X(r2r_kind);			   \
 									   \
 typedef fftw_write_char_func_do_not_use_me X(write_char_func);		   \
 typedef fftw_read_char_func_do_not_use_me X(read_char_func);		   \
+typedef fftw_before_planner_hook_do_not_use_me X(before_planner_hook_t);   \
+typedef fftw_after_planner_hook_do_not_use_me X(after_planner_hook_t);     \
+                                                                           \
+FFTW_EXTERN void X(set_planner_hooks)(X(before_planner_hook_t) before,     \
+                                      X(after_planner_hook_t) after);      \
 									   \
 FFTW_EXTERN void X(execute)(const X(plan) p);				   \
 									   \
@@ -359,7 +366,7 @@ FFTW_DEFINE_API(FFTW_MANGLE_LONG_DOUBLE, long double, fftwl_complex)
 /* __float128 (quad precision) is a gcc extension on i386, x86_64, and ia64
    for gcc >= 4.6 (compiled in FFTW with --enable-quad-precision) */
 #if (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6)) \
- && !(defined(__ICC) || defined(__INTEL_COMPILER)) \
+ && !(defined(__ICC) || defined(__INTEL_COMPILER) || defined(__CUDACC__) || defined(__PGI)) \
  && (defined(__i386__) || defined(__x86_64__) || defined(__ia64__))
 #  if !defined(FFTW_NO_Complex) && defined(_Complex_I) && defined(complex) && defined(I)
 /* note: __float128 is a typedef, which is not supported with the _Complex
